@@ -24,4 +24,9 @@ class Product extends Model
         'precio' => 'decimal:2',
         'disponible' => 'boolean',
     ];
+
+    //Relación muchos a muchos con Order
+    public function orders(){
+        return $this->belongsToMany(Order::class)->withPivot('cantidad', 'precio_unitario')->withTimestamps();
+    }
 }
